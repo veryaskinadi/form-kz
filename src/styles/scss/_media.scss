@@ -1,0 +1,140 @@
+@media (max-width: 1170px) {
+  .body {
+    width: 767px;
+  }
+  .container {
+    width: 650px;
+  }
+  .header {
+    width: 767px;
+  }
+  .experience {
+    &__wrapper {
+      width: 600px;
+    }
+  }
+  .js {
+    &__switchAreaContainer {
+      margin-top: -16px;
+    }
+    &__switchArea {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    &__colored {
+      width: 650px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .body {
+    width: 567px;
+  }
+  .container {
+    width: 500px;
+  }
+  .header {
+    background-color: rgba(250,250,250,.9);
+    width: 567px;
+    &__menu {
+      display: none;
+      position: absolute;
+      top: 57px;
+      flex-direction: column;
+      align-items: flex-start;
+      height: 200px;
+      width: 100%;
+      background-color: rgba(250,250,250,.96);
+      &_visible {
+        display: flex;
+      }
+    }
+    &__devider {
+      display: none;
+    }
+    &__itemMenu {
+      font-size: 21px;
+      line-height: 42px;
+      font-weight: 400;
+      &_active {
+        color: #1c1c1c;
+      }
+    }
+    &__hamburger {
+      display: flex;
+    }
+  }
+  .personal-information {
+    &__blockInput {
+      width: 500px;
+    }
+    &__select {
+      width: 256px;
+    }
+    &__yearList {
+      width: 256px;
+    }
+  }
+  .js {
+    &__colored {
+      width: 500px;
+    }
+  }
+  .experience {
+    &__wrapper {
+      width: 510px;
+    }
+  }
+  .story {
+    &__textarea {
+      width: 500px;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .body {
+    width: 319px;
+    height: 2465px;
+  }
+  .container {
+    width: 300px;
+  }
+  .personal-information {
+    &__blockInput {
+      width: 300px;
+    }
+  }
+  .header {
+    width: 319px;
+  }
+  .experience {
+    &__wrapper {
+      width: 300px;
+      grid-template-rows: 9fr;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .js {
+    &__switchAreaText {
+      display: none;
+    }
+    &__switchAreaSmile {
+      display: block;
+    }
+    &__colored {
+      width: 300px;
+    }
+  }
+  .story {
+    &__textarea {
+      width: 300px;
+    }
+    &__descr {
+      width: 300px;
+    }
+  }
+}
