@@ -87,7 +87,6 @@ function css() {
 		.pipe(sassGlob())
 		.pipe(sass())
 		.pipe(prefixer())
-		.pipe(gulp.dest('./docs/scripts'))
 		.pipe(cssmin())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(path.docs.css))
