@@ -2,24 +2,36 @@ const inputBlocks = document.getElementsByClassName('personal-information__block
 
 for (let i = 0; i < inputBlocks.length; i++) {
     inputBlocks[i].addEventListener('click', function(event) {
-        const inputBlock = event.target.closest('.personal-information__blockInput')
-        const placeholders = inputBlock.getElementsByClassName('personal-information__titleInput')
-        inputBlock.classList.add("personal-information__blockInput_active");
-        placeholders[0].classList.add('personal-information__titleInput_label');
-        placeholders[0].classList.remove('personal-information__titleInput_placeholder')
-        const input = inputBlock.getElementsByClassName('personal-information__input')[0]
+        const input = inputBlocks[i].getElementsByClassName('personal-information__input')[0]
         input.focus();
     });
     const input = inputBlocks[i].getElementsByClassName('personal-information__input')[0]
-    input.addEventListener('blur', function(event){
-        const inputBlock = event.target.closest('.personal-information__blockInput')
-        const placeholders = inputBlock.getElementsByClassName('personal-information__titleInput')
-        if (event.target.value.length === 0) {
-            inputBlock.classList.remove("personal-information__blockInput_active");
-            placeholders[0].classList.remove('personal-information__titleInput_label');
-            placeholders[0].classList.add('personal-information__titleInput_placeholder')
-        }
-    })
+    input.addEventListener('blur', blurHandler)
+    input.addEventListener('focus', focusHandler)
+}
+
+function focusHandler(event){
+    const inputBlock = event.target.closest('.personal-information__blockInput')
+    const placeholders = inputBlock.getElementsByClassName('personal-information__titleInput')
+    inputBlock.classList.add("personal-information__blockInput_active")
+    placeholders[0].classList.add('personal-information__titleInput_label')
+    placeholders[0].classList.remove('personal-information__titleInput_placeholder')
+}
+
+function blurHandler(event){
+    const inputBlock = event.target.closest('.personal-information__blockInput')
+    changePlaceholder(inputBlock)
+}
+
+function changePlaceholder(inputBlock){
+    const placeholders = inputBlock.getElementsByClassName('personal-information__titleInput')
+    inputBlock.classList.remove("personal-information__blockInput_active")
+    const inputValue = inputBlock.getElementsByClassName('personal-information__input')[0].value
+    if (inputValue.length === 0) {
+        inputBlock.classList.remove("personal-information__blockInput_active");
+        placeholders[0].classList.remove('personal-information__titleInput_label');
+        placeholders[0].classList.add('personal-information__titleInput_placeholder')
+    }
 }
 
 const select = document.getElementById('select');
@@ -40,6 +52,15 @@ for (let i = 0; i < options.length; i++) {
 function openYearList() {
     select.classList.toggle('personal-information__select_active')
     yearList.classList.toggle('personal-information__yearList_active')
+}
+
+document.addEventListener('click', closeYearList)
+
+function closeYearList(event) {
+    if (event.target.closest('.personal-information__select') == null) {
+        select.classList.remove('personal-information__select_active')
+        yearList.classList.remove('personal-information__yearList_active')
+    }
 }
 
 select.onclick = function() {
@@ -116,3 +137,75 @@ const menu = document.querySelector('.header__menu')
 humburger.onclick = function() {
     menu.classList.toggle ('header__menu_visible')
 };
+
+document.addEventListener('scroll', function(event){
+    const menuPersonalInformation = document.getElementById('menuPersonal-information')
+    const menuExperience = document.getElementById('menuExperience')
+    const menuJs = document.getElementById('menuJs')
+    const menuStory = document.getElementById('menuStory')
+    const personalInformation = document.getElementById('personal-information')
+    const experience = document.getElementById('experience')
+    const sectionJs = document.getElementById('sectionJs')
+    const story = document.getElementById('story')
+
+    menuPersonalInformation.onclick = function() {
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+        menuPersonalInformation.classList.add('header__itemMenu_active')
+    }
+    menuExperience.onclick = function() {
+        menuExperience.classList.add('header__itemMenu_active')
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+    }
+    menuJs.onclick = function() {
+        menuJs.classList.add('header__itemMenu_active')
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+    }
+    menuStory.onclick = function() {
+        menuStory.classList.add('header__itemMenu_active')
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+    }
+
+    let topPersonalInformation = personalInformation.getBoundingClientRect().top
+    let topExperience = experience.getBoundingClientRect().top
+    let topSectionJs = sectionJs.getBoundingClientRect().top
+    let topStory = story.getBoundingClientRect().top
+    let bottomPersonalInformation = personalInformation.getBoundingClientRect().bottom
+    let bottomExperience = experience.getBoundingClientRect().bottom
+    let bottomSectionJs = sectionJs.getBoundingClientRect().bottom
+    let bottomStory = story.getBoundingClientRect().bottom
+    let center = window.height / 2
+
+    if (topPersonalInformation > -20 && topPersonalInformation < 20 ) {
+        console.log(topPersonalInformation, topExperience, topSectionJs, topStory)
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+        menuPersonalInformation.classList.add('header__itemMenu_active')
+    } else if (topExperience > -20 && topExperience < 20) {
+        console.log(topPersonalInformation, topExperience, topSectionJs, topStory)
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+        menuExperience.classList.add('header__itemMenu_active')
+    } else if (topSectionJs > -20 && topSectionJs < 20) {
+        console.log(topPersonalInformation, topExperience, topSectionJs, topStory)
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuStory.classList.remove('header__itemMenu_active')
+        menuJs.classList.add('header__itemMenu_active')
+    } else if (topStory > -20 && topStory < 20) {
+        console.log(topPersonalInformation, topExperience, topSectionJs, topStory)
+        menuPersonalInformation.classList.remove('header__itemMenu_active')
+        menuExperience.classList.remove('header__itemMenu_active')
+        menuJs.classList.remove('header__itemMenu_active')
+        menuStory.classList.add('header__itemMenu_active')
+    }
+});

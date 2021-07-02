@@ -4,9 +4,9 @@
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
-  width: 1170px;
+  width: 1169px;
   height: 2234px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid $border-color;
   box-shadow: 0 0 20px 3px rgba(34, 60, 80, 0.2);
 }
 .container {
@@ -15,13 +15,13 @@
   width: 768px;
 }
 .title {
-  color: #1c1c1c;
+  color: $text-color;
   font-size: 70px;
   font-weight: 300;
-  margin-top: 113px;
+  margin-top: 191px;
 }
 .subtitle {
-  color: #1c1c1c;
+  color: $text-color;
   font-size: 30px;
   font-weight: 300;
   margin-top: 20px;
@@ -50,10 +50,14 @@
     text-decoration: none;
     padding-right: 38px;
     padding-left: 38px;
-    color: #435993;
+    color: $main-color;
     font-size: 14px;
     font-weight: 300;
     text-align: center;
+    &_active {
+      color: $text-color;
+      font-weight: 400;
+    }
   }
   &__devider {
     border: none;
@@ -74,7 +78,7 @@
     display: block;
     height: 1px;
     width: 100%;
-    background-color: #435993;
+    background-color: $main-color;
     transition: .5s all;
   }
 }
@@ -86,7 +90,7 @@
   }
   &__input {
     width: 99%;
-    color: #1c1c1c;
+    color: $text-color;
     font-size: 20px;
     font-weight: 400;
     text-align: center;
@@ -103,18 +107,18 @@
     width: 520px;
     height: 60px;
     border-radius: 5px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $border-color;
     margin: 0 auto;
     margin-bottom: 22px;
     &_active {
-      border: 1px solid #435993;
+      border: 1px solid $main-color;
     }
   }
   &__select {
     width: 320px;
     height: 60px;
     border-radius: 5px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $border-color;
     appearance: none;
     background: url('../img/arrow.svg') no-repeat right;
     background-position-x: calc(100% - 20px);
@@ -138,7 +142,7 @@
     justify-content: center;
     z-index: 999;
     &_filled {
-      color: #1c1c1c;
+      color: $text-color;
       font-size: 20px;
       font-weight: 400;
       text-align: center;
@@ -161,7 +165,7 @@
     }
   }
   &__option {
-    color: #435993;
+    color: $main-color;
     font-size: 20px;
     font-weight: 300;
     line-height: 36px;
@@ -192,24 +196,50 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin-top: 46px;
+    grid-gap: 15px;
+    margin-top: 51px;
   }
   &__inputBlock {
-    text-align: start;
     display: flex;
-    align-items: center;
+    text-align: left;
+    position: relative;
+    padding-left: 37px;
   }
   &__input {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #435993;
-    margin-right: 12px;
+    display: none;
+  }
+  &__label {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &__label:after {
+    cursor: pointer;
+    content: '';
+    display: block;
+    height: 19px;
+    width: 19px;
+    border: 1px solid $main-color;
+    border-radius: 3px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+  }
+  &__label:hover::after {
+    background-color: #e9efff;
+  }
+  &__input[type=checkbox]:checked + label:after {
+    display: flex;
+    justify-content: center;
+    content: url("../img/check.svg");
+    width: 19px;
+    height: 19px;
+    background-color: $main-color;
   }
 }
 
 .js {
-  padding-top: 132px;
+  padding-top: 138px;
   &__track {
     width: 100%;
     position: relative;
@@ -259,13 +289,13 @@
     position: absolute;
     height: 20px;
     width: 100%;
-    background-color: #1c1c1c;
+    background-color: $text-color;
     opacity: 0.1;
   }
   &__colored {
     position: initial;
     width: 768px;
-    background: linear-gradient(to right, #d7b3f4, #435993);
+    background: linear-gradient(to right, #d7b3f4, $main-color);
   }
   &__skew {
     width: 100%;
@@ -341,7 +371,7 @@
     display: block;
     margin: 0 auto;
     width: 500px;
-    color: #1c1c1c;
+    color: $text-color;
     font-size: 16px;
     font-weight: 300;
     line-height: 23.99px;
@@ -352,13 +382,13 @@
     resize: none;
     width: 521px;
     height: 181px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid $border-color;
     border-radius: 10px;
     display: block;
     margin: 0 auto;
     margin-top: 38px;
     outline: none;
-    color: #1c1c1c;
+    color: $text-color;
     font-size: 20px;
     font-weight: 400;
     box-sizing: border-box;
@@ -370,14 +400,14 @@
       text-align: left;
     }
     &:focus {
-      border: 1px solid #435993;
+      border: 1px solid $main-color;
     }
   }
   &__button {
     margin-top: 71px;
     width: 116px;
     height: 51px;
-    background-color: #435993;
+    background-color: $main-color;
     border-radius: 10px;
     border: none;
     cursor: pointer;

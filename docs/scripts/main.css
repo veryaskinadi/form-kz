@@ -8,7 +8,7 @@ body {
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
-  width: 1170px;
+  width: 1169px;
   height: 2234px;
   border: 1px solid #e5e5e5;
   box-shadow: 0 0 20px 3px rgba(34, 60, 80, 0.2);
@@ -24,7 +24,7 @@ body {
   color: #1c1c1c;
   font-size: 70px;
   font-weight: 300;
-  margin-top: 113px;
+  margin-top: 191px;
 }
 
 .subtitle {
@@ -63,6 +63,10 @@ body {
   font-size: 14px;
   font-weight: 300;
   text-align: center;
+}
+.header__itemMenu_active {
+  color: #1c1c1c;
+  font-weight: 400;
 }
 .header__devider {
   border: none;
@@ -204,23 +208,49 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-  margin-top: 46px;
+  grid-gap: 15px;
+  margin-top: 51px;
 }
 .experience__inputBlock {
-  text-align: start;
   display: flex;
-  align-items: center;
+  text-align: left;
+  position: relative;
+  padding-left: 37px;
 }
 .experience__input {
-  width: 20px;
-  height: 20px;
+  display: none;
+}
+.experience__label {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 300;
+}
+.experience__label:after {
+  cursor: pointer;
+  content: "";
+  display: block;
+  height: 19px;
+  width: 19px;
   border: 1px solid #435993;
-  margin-right: 12px;
+  border-radius: 3px;
+  position: absolute;
+  top: -2px;
+  left: 0;
+}
+.experience__label:hover::after {
+  background-color: #e9efff;
+}
+.experience__input[type=checkbox]:checked + label:after {
+  display: flex;
+  justify-content: center;
+  content: url("../img/check.svg");
+  width: 19px;
+  height: 19px;
+  background-color: #435993;
 }
 
 .js {
-  padding-top: 132px;
+  padding-top: 138px;
 }
 .js__track {
   width: 100%;
@@ -444,7 +474,10 @@ body {
   }
 
   .experience__wrapper {
-    width: 600px;
+    width: 650px;
+  }
+  .experience__label {
+    font-size: 15px;
   }
 
   .js__switchAreaContainer {
@@ -467,6 +500,10 @@ body {
 
   .container {
     width: 500px;
+  }
+
+  .title {
+    margin-top: 117px;
   }
 
   .header {
@@ -517,6 +554,10 @@ body {
 
   .experience__wrapper {
     width: 510px;
+    grid-gap: 20px;
+  }
+  .experience__label_long {
+    margin-top: -6px;
   }
 
   .story__textarea {
@@ -525,7 +566,7 @@ body {
 }
 @media (max-width: 568px) {
   .body {
-    width: 319px;
+    width: 318px;
     height: 2465px;
   }
 
@@ -545,6 +586,9 @@ body {
     width: 300px;
     grid-template-rows: 9fr;
     grid-template-columns: 1fr;
+  }
+  .experience__label_long {
+    margin-top: 0;
   }
 
   .js__switchAreaText {
